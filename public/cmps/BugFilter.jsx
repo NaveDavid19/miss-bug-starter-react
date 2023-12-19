@@ -38,12 +38,14 @@ export function BugFilter({ filterBy, onSetFilter }) {
 
 
 
-    const { txt, minSpeed } = filterByToEdit
+    const { title, minSeverity } = filterByToEdit
     return (
         <section className="car-filter main-layout full">
             <form onSubmit={onSetFilterBy} >
-                <label htmlFor="txt">search: </label>
-                <input value={txt} onChange={handleChange} type="text" id="txt" name="txt" />
+                <label htmlFor="title">search: </label>
+                <input value={title} onChange={handleChange} type="text" id="title" name="title" />
+                <label htmlFor="minSeverity">minSeverity: </label>
+                <input value={minSeverity} onChange={handleChange} type="number" id="minSeverity" name="minSeverity" />
             </form>
         </section>
     )

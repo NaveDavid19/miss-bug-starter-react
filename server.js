@@ -7,10 +7,21 @@ const app = express()
 
 app.use(express.static('public'))
 app.use(cookieParser())
+app.use(express.json())
+
 
 // Get Bugs (READ)
 app.get('/api/bug', (req, res) => {
-    bugService.query()
+    console.log(req.query);
+    const filterBy = {
+        title: req.query.title || '',
+        minSeverity: req.query.minSeverity || 0,
+    }
+    const sortBy = {
+        type: req.query.type,
+        sortDir: +req.query.sortDir || 1
+    }
+    bugService.query(filterBy, sortBy)
         .then(bugs => {
             res.send(bugs)
         })
@@ -20,13 +31,26 @@ app.get('/api/bug', (req, res) => {
         })
 })
 
-//Get Bug (READ)
-app.get('/api/bug/save', (req, res) => {
+//Add Bug (CREATE)
+app.post('/api/bug', (req, res) => {
     const bugToSave = {
+        title: req.body.title,
+        severity: +req.body.severity,
+    }
+    bugService.save(bugToSave)
+        .then(bug => res.send(bug))
+        .catch((err) => {
+            loggerService.error('Cannot save bug', err)
+            res.status(400).send('Cannot save bug')
+        })
+})
 
-        title: req.query.title,
-        severity: +req.query.severity,
-        _id: req.query._id
+//Edit Bug(UPDATE)
+app.put('/api/bug', (req, res) => {
+    const bugToSave = {
+        title: req.body.title,
+        severity: +req.body.severity,
+        _id: req.body._id
     }
     bugService.save(bugToSave)
         .then(bug => res.send(bug))
@@ -37,20 +61,20 @@ app.get('/api/bug/save', (req, res) => {
 })
 
 //Get Bug(READ)
-app.get('/api/bug/:bugId', (req, res) => {
+app.get('/api/bug/:id', (req, res) => {
     let visitedBugs = req.cookies.visitedBugs || [];
 
     if (visitedBugs.length >= 3) {
         return res.status(401).send('Wait for a bit');
     }
 
-    if (visitedBugs && !visitedBugs.includes(req.params.bugId)) {
-        visitedBugs.push(req.params.bugId);
+    if (visitedBugs && !visitedBugs.includes(req.params.id)) {
+        visitedBugs.push(req.params.id);
     }
 
     res.cookie('visitedBugs', visitedBugs, { maxAge: 1000 * 7 });
 
-    const bugId = req.params.bugId
+    const bugId = req.params.id
     bugService.getById(bugId)
         .then(bug => res.send(bug))
         .catch((err) => {
@@ -59,8 +83,8 @@ app.get('/api/bug/:bugId', (req, res) => {
         })
 })
 //Remove Bug (DELETE)
-app.get('/api/bug/:bugId/remove', (req, res) => {
-    const bugId = req.params.bugId
+app.delete('/api/bug/:id', (req, res) => {
+    const bugId = req.params.id
     bugService.remove(bugId)
         .then(() => res.send(bugId))
         .catch((err) => {
