@@ -41,7 +41,7 @@ function getDefaultFilter() {
 }
 
 function getDefaultSort() {
-    return { type: '' }
+    return { type: '', sortDir: false }
 }
 
 

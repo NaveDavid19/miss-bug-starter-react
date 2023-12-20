@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "u102",
+    "username": "admin",
+    "fullname": "Nave David",
+    "password": "admin",
+    "isAdmin": true
+  },
+  {
+    "_id": "u104",
+    "username": "Alice",
+    "fullname": "Alice Smith",
+    "password": "alice",
+    "isAdmin": false
+  },
+  {
+    "_id": "u104",
+    "username": "Bob",
+    "fullname": "Bob Johnson",
+    "password": "bob",
+    "isAdmin": false
+  },
+  {
+    "_id": "u104",
+    "username": "Charlie",
+    "fullname": "Charlie Brown",
+    "password": "charlie",
+    "isAdmin": false
+  }
+]

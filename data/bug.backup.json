@@ -1,22 +1,57 @@
 [
     {
-        "title": "Infinite Loop Detected",
-        "severity": 4,
-        "_id": "1NF1N1T3"
-    },
-    {
-        "title": "Keyboard Not Found",
+        "_id": "pqr678",
+        "title": "Mobile App Crashes on Launch",
+        "description": "App crashes immediately after launch on mobile devices",
         "severity": 3,
-        "_id": "K3YB0RD"
+        "createdAt": 1722107359454,
+        "creator": {
+            "_id": "u106",
+            "fullname": "Eva Martinez"
+        }
     },
     {
-        "title": "404 Coffee Not Found",
+        "_id": "mno345",
+        "title": "Payment Gateway Timeout",
+        "description": "Timeout issues while processing payments",
         "severity": 2,
-        "_id": "C0FF33"
+        "createdAt": 1702107359454,
+        "creator": {
+            "_id": "u105",
+            "fullname": "Bob Smith"
+        }
     },
     {
-        "title": "Unexpected Response",
+        "_id": "jkl012",
+        "title": "Missing Product Images",
+        "description": "Product images not displaying on the website",
+        "severity": 3,
+        "createdAt": 1682107359454,
+        "creator": {
+            "_id": "u104",
+            "fullname": "Alice Johnson"
+        }
+    },
+    {
+        "_id": "ghi789",
+        "title": "Database Connection Error",
+        "description": "Unable to establish connection to the database",
         "severity": 1,
-        "_id": "G0053"
+        "createdAt": 1662107359454,
+        "creator": {
+            "_id": "u103",
+            "fullname": "John Doe"
+        }
+    },
+    {
+        "_id": "def456",
+        "title": "Login Page Alignment Issue",
+        "description": "UI elements misaligned on the login page",
+        "severity": 2,
+        "createdAt": 1642107359454,
+        "creator": {
+            "_id": "u102",
+            "fullname": "Mia Thompson"
+        }
     }
 ]
